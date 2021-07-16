@@ -16,6 +16,7 @@ const Upload = require('./models/uploads');
 require("./db/conn");
 const Register = require("./models/registers");
 const { json } = require("express");
+const { allowedNodeEnvironmentFlags } = require("process");
 
 const port = process.env.PORT || 3000;
 
@@ -62,6 +63,17 @@ app.get("/datafiles",(req,res)=>{
     res.render("datafiles");
 });
 
+
+
+
+
+
+
+
+
+
+
+
 app.get("/resetpass/:id/:token/:useremail",(req,res)=>{
     const {id,token,useremail} = req.params;
    res.send(req.params);
@@ -85,6 +97,8 @@ app.get("/resetpass/:id/:token/:useremail",(req,res)=>{
     }
 
 })
+
+
 
 // create new user in database
 app.post("/register" , async (req,res) =>{
@@ -122,17 +136,18 @@ app.post("/register" , async (req,res) =>{
 
             const useremail = await Register.findOne({emailaddress:emailaddress});
             const isMatch = await bcrypt.compare(password,useremail.password);
-            
+            console.log(`${password} and ${useremail.password}`)
             if(isMatch){
                 res.status(201).render("secondpage");
             }else{
+                // res.status(201).render("secondpage");
                 res.send("INVALID LOGIN DETAILS");
             }
         } catch (error) {
             res.status(400).send("INVALID EMAIL");
         }
     })
-    
+
 
 
 app.post("/forgotpass",async(req,res)=>{

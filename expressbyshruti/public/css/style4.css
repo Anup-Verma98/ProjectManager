@@ -11,13 +11,16 @@ body{
     width:400px;
     height:auto;
 }
-.home{
-
+form{
+    width: 100%;
 }
-
 .members{
     visibility: hidden;
 } 
 #team_mem1,#team_mem2,#team_mem3,#team_mem4{
     visibility: hidden;
+}
+
+.icon-green{
+    color:green;
 }

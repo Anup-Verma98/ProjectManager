@@ -11,7 +11,7 @@ const ProjectData=new mongoose.Schema({
     member1:
     {
         type:String,
-        requiredd:true
+        required:true
     },
 
     member2:

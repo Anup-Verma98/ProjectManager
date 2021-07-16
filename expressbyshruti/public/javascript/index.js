@@ -11,9 +11,3 @@ select.addEventListener("change",()=>{
     
 })
 
-document.getElementsByClassName(".sub").addEventListener("submit",x);
-function x(){
-    alert("form submitted");
-}
-
-
