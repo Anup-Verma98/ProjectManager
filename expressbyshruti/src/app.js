@@ -64,16 +64,6 @@ app.get("/datafiles",(req,res)=>{
 });
 
 
-
-
-
-
-
-
-
-
-
-
 app.get("/resetpass/:id/:token/:useremail",(req,res)=>{
     const {id,token,useremail} = req.params;
    res.send(req.params);
@@ -175,28 +165,28 @@ catch{
 }
 });
 
-app.post("/resetpass/:id/:token/:emailaddress",async(req,res)=>{
-    const {id,token} = req.params;
+// app.post("/resetpass/:id/:token/:emailaddress",async(req,res)=>{
+//     const {id,token} = req.params;
     
-    const{password,password2} = req.body;
+//     const{password,password2} = req.body;
     
-    if(id !== emailaddress.id){
-        res.send("invalid email id");
-        return;
-    }
+//     if(id !== emailaddress.id){
+//         res.send("invalid email id");
+//         return;
+//     }
 
-    //we have a valid id and we have a valid user with this id
-    const secret = JWT_SECRET + emailaddress.password;
-    try{
-        const payload = jwt.verify(token,secret);
-        emailaddress.password = password;
-        res.send("password changed");
-    }
-    catch(error){
-        console.log(error.message);
-        res.send(error.message);
-    }
-});
+//     //we have a valid id and we have a valid user with this id
+//     const secret = JWT_SECRET + emailaddress.password;
+//     try{
+//         const payload = jwt.verify(token,secret);
+//         emailaddress.password = password;
+//         res.send("password changed");
+//     }
+//     catch(error){
+//         console.log(error.message);
+//         res.send(error.message);
+//     }
+// });
 
 //file upload feature
 app.post("/fileupload",async(req,res)=>{
